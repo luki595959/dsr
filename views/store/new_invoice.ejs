@@ -1,0 +1,28 @@
+<%- include('../partials/header.ejs')%>
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Invoice</h1>
+            <p>Create New Invoice</p>
+        </div>
+    </header>
+    <div class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style=" margin: 25px auto; ">
+            <form action="/store/invoice" method="post">
+                <div class="form-group">
+                    <label for="a">Type </label>
+                    <select class="form-control" name="type" id="a">
+                        <option></option>
+                        <option value="Sold">Sold</option>
+                        <option value="Service">Service</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="b">Price</label>
+                    <input class="form-control" id="b" type="text" name="price" placeholder="price">
+                </div>
+                <button style="width: 100%;" class="btn btn-lg btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

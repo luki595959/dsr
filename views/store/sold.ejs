@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Solds</h1>
+                <p>Name And Quantity Of Selled Devices</p>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>Device</th>
+                    <th>Quantity</th>
+                </tr>
+                <% solds.forEach(function(sold){ %>
+                    <tr>
+                        <td>
+                            <%= sold._id %>
+                        </td>
+                        <td>
+                            <%= sold.device%>
+                        </td>
+                        <td>
+                            <%= sold.quantity%>
+
+                    </tr>
+                    <% }); %>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

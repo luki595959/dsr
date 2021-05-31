@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>External Orders</h1>
+                <p>Ordres For Extenal Suppliers</p>
+                <a class="btn btn-large btn-primary" href="/manager/order/new">New Order</a>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>Device</th>
+                    <th>Quantity</th>
+                </tr>
+                <% orders.forEach(function(order){ %>
+                    <tr>
+                        <td>
+                            <%= order._id %>
+                        </td>
+                        <td>
+                            <%= order.device%>
+                        </td>
+                        <td>
+                            <%= order.quantity%>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Warehouse</h1>
+                <p>All Delivery</p>
+                <a class="btn btn-large btn-primary" href="/warehouse/new">New Delivery</a>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>Driver</th>
+                    <th>Device</th>
+                    <th>Quantity</th>
+                    <th>Shop</th>
+                    <th>State</th>
+                </tr>
+                <% delivery.forEach(function(delivery){ %>
+                    <tr>
+                        <td>
+                            <%= delivery._id %>
+                        </td>
+                        <td>
+                            <%= delivery.driver%>
+                        </td>
+                        <td>
+                            <%= delivery.device %>
+                        </td>
+                        <td>
+                            <%= delivery.quantity %>
+                        </td>
+                        <td>
+                            <%= delivery.shop %>
+                        </td>
+                        <td>
+                            <%= delivery.state %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

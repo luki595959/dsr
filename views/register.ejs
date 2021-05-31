@@ -1,0 +1,46 @@
+<%- include('partials/header.ejs')%>
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Register</h1>
+            <p>Register New Users</p>
+        </div>
+    </header>
+    <div class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style=" margin: 25px auto; ">
+            <form action="/register" method="post">
+                <div class="form-group">
+                    <label for="a">Username </label>
+                    <input class="form-control" id="a" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="b">Password </label>
+                    <input class="form-control" id="b" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <label for="d">Mobile Phone </label>
+                    <input class="form-control" id="d" type="text" name="phone" placeholder="+421 912 345 678">
+                </div>
+                <%if(!currentUser){%>
+                    <%} else {%>
+                        <%if(currentUser.pozicia=="admin"){%>
+                            <div class="form-group">
+                                <label for="c">Possition </label>
+                                <select class="form-control" name="position" id="c">
+                                    <option></option>
+                                    <option value="skladník">Skladník</option>
+                                    <option value="účtovník">Účtovník</option>
+                                    <option value="závozník">Závozník</option>
+                                    <option value="predajnné oddelenie">Predajnné oddelenie</option>
+                                    <option value="manažér skladu">Manažér skladu</option>
+                                    <option value="vedúci podniku">Vedúci podniku</option>
+                                    <option value="servisný štáb">Servisný štáb</option>
+                                    <option value="admin">Administrátor</option>
+                                </select>
+                            </div>
+                            <%}}%>
+                                <button style="width: 100%;" class="btn btn-lg btn-success">Sing Up</button>
+            </form>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs')%>

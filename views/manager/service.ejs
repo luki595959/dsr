@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Service</h1>
+                <p>Name And Failure Of Devices</p>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>Device</th>
+                    <th>Failure</th>
+                    <th>State</th>
+                </tr>
+                <% services.forEach(function(service){ %>
+                    <tr>
+                        <td>
+                            <%= service._id %>
+                        </td>
+                        <td>
+                            <%= service.device%>
+                        </td>
+                        <td>
+                            <%= service.failure%>
+                        </td>
+                        <td>
+                            <%= service.state%>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

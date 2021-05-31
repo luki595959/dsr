@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs')%>
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Service</h1>
+            <p>Send New Service</p>
+        </div>
+    </header>
+    <div class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style=" margin: 25px auto; ">
+            <form action="/customer/services" method="post">
+                <div class="form-group">
+                    <label for="a">Device </label>
+                    <input class="form-control" id="a" type="text" name="device" placeholder="Device">
+                </div>
+                <div class="form-group">
+                    <label for="b">Failure </label>
+                    <input class="form-control" id="b" type="text" name="failure" placeholder="Failure">
+                </div>
+                <button style="width: 100%;" class="btn btn-lg btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

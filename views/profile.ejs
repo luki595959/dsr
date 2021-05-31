@@ -1,0 +1,75 @@
+<%- include('partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Mobile Service</h1>
+                <style>
+                    .flexContainer {
+                        display: flex;
+                    }
+
+                    .inputField {
+                        flex: 1;
+                    }
+                </style>
+            </div>
+        </header>
+        <div id="content-wrap" style="text-align: center;">
+            <h3>Welcome To Your Profile: <b>
+                    <%= currentUser.username %>,
+                </b>
+                <%=currentUser.position %>
+            </h3>
+            <br>
+            <div>
+                <% if( currentUser.position=="admin" ){ %>
+                    <a class="btn btn-large btn-info" href="/register">Add New User</a>
+                    <a class="btn btn-large btn-primary" href="/admin">Show Employees</a>
+                    <%}%>
+                        <% if( currentUser.position=="vedúci podniku" ){ %>
+                            <a class="btn btn-large btn-info" href="/manager/orders">External Orders</a>
+                            <a class="btn btn-large btn-primary" href="/manager/sold">Show Sold Products</a>
+                            <a class="btn btn-large btn-default" href="/manager/services">Show Serviced Products</a>
+                            <%}%>
+                                <% if( currentUser.position=="zákazník" ){ %>
+                                    <a class="btn btn-large btn-info" href="/customer/sold">Show My Order</a>
+                                    <a class="btn btn-large btn-primary" href="/customer/services">Show My Serviced
+                                        Products</a>
+                                    <%}%>
+                                        <% if( currentUser.position=="servisný štáb" ){ %>
+                                            <a class="btn btn-large btn-info" href="/service/services">Show All
+                                                Services</a>
+                                            <%}%>
+                                                <% if( currentUser.position=="predajné oddelenie" ){ %>
+                                                    <a class="btn btn-large btn-info" href="/store/sold">Show Sold
+                                                        Products</a>
+                                                    <a class="btn btn-large btn-primary" href="/store/invoice/new">New
+                                                        Invoice</a>
+                                                    <%}%>
+                                                        <% if( currentUser.position=="účtovník" ){ %>
+                                                            <a class="btn btn-large btn-info"
+                                                                href="/economy/invoices">Show
+                                                                All Invoicess</a>
+                                                            <a class="btn btn-large btn-primary"
+                                                                href="/economy/wage">Wages</a>
+                                                            <%}%>
+                                                                <% if( currentUser.position=="manažér skladu" ){ %>
+                                                                    <a class="btn btn-large btn-info"
+                                                                        href="/warehouse">Show Delivery</a>
+                                                                    <%}%>
+                                                                        <% if( currentUser.position=="skladník" ){ %>
+                                                                            <a class="btn btn-large btn-info"
+                                                                                href="/warehouse/warehouseman">Show
+                                                                                Delivery</a>
+                                                                            <%}%>
+                                                                                <% if( currentUser.position=="závozník"
+                                                                                    ){ %>
+                                                                                    <a class="btn btn-large btn-info"
+                                                                                        href="/driver">Show
+                                                                                        Delivery</a>
+                                                                                    <%}%>
+            </div>
+            <br>
+        </div>
+    </div>
+    <%- include('partials/footer.ejs')%>

@@ -1,0 +1,15 @@
+body {
+    background-color: #ffffff;
+}
+
+#landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 30vh;
+}
+
+#landing-header h1 {
+    color: #000000;
+    font-size: 350%;
+}

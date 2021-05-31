@@ -1,0 +1,49 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Delivey</h1>
+                <p>All Delivery</p>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>Driver</th>
+                    <th>Device</th>
+                    <th>Quantity</th>
+                    <th>State</th>
+                    <th>Option</th>
+                </tr>
+                <% delivery.forEach(function(delivery){ %>
+                    <tr>
+                        <td>
+                            <%= delivery._id %>
+                        </td>
+                        <td>
+                            <%= delivery.driver%>
+                        </td>
+                        <td>
+                            <%= delivery.device%>
+                        </td>
+                        <td>
+                            <%= delivery.quantity%>
+                        </td>
+                        <td>
+                            <%= delivery.state%>
+                        </td>
+                        <%if(delivery.state=="Ready For Driver"){%>
+                            <td><a class="btn btn-xs btn-success" href="/driver/<%=delivery._id%>">
+                                    &#10004;
+                                    Accept</a></td>
+                            <td>
+                                <%}else{%>
+                            <td></td>
+                            <%}%>
+                    </tr>
+                    <%});%>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

@@ -1,0 +1,33 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Wage</h1>
+                <p>All Wages</p>
+                <a class="btn btn-large btn-primary" href="/economy/wage/new">New Wage</a>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>Employee</th>
+                    <th>Wage</th>
+                </tr>
+                <% wages.forEach(function(wage){ %>
+                    <tr>
+                        <td>
+                            <%= wage._id %>
+                        </td>
+                        <td>
+                            <%= wage.employee%>
+                        </td>
+                        <td>
+                            <%= wage.wage %> €
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

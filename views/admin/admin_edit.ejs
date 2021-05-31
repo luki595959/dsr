@@ -1,0 +1,37 @@
+<%- include('../partials/header.ejs')%>
+    <div class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style=" margin: 25px auto; ">
+            <h2 style="text-align:center">Edit User: <%= user.username%>
+            </h2>
+            <form style=" margin: 25px auto" action="/admin/<%=user._id%>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label for="a">Username </label>
+                    <input class="form-control" id="a" type="text" name="user[username]" value="<%=user.username%>">
+                </div>
+                <div class="form-group">
+                    <label for="b">Phone </label>
+                    <input class="form-control" id="b" type="text" name="user[phone]" value="<%=user.phone%>">
+                </div>
+                <div class="form-group">
+                    <label for="c">Possition </label>
+                    <select class="form-control" name="user[position]" id="c">
+                        <option></option>
+                        <option value="skladník">Skladník</option>
+                        <option value="účtovník">Účtovník</option>
+                        <option value="závozník">Závozník</option>
+                        <option value="predajné oddelenie">Predajné oddelenie</option>
+                        <option value="manažér skladu">Manažér skladu</option>
+                        <option value="vedúci podniku">Vedúci podniku</option>
+                        <option value="servisný štáb">Servisný štáb</option>
+                        <option value="admin">Administrátor</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">
+                </div>
+            </form>
+            <a href="/admin">Go back</a>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

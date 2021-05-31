@@ -1,0 +1,53 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Service</h1>
+                <p>Name And Failure Of Devices</p>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>User</th>
+                    <th>Device</th>
+                    <th>Failure</th>
+                    <th>State</th>
+                    <th>Option</th>
+                </tr>
+                <% services.forEach(function(service){ %>
+                    <tr>
+                        <td>
+                            <%= service._id %>
+                        </td>
+                        <td>
+                            <%= service.username%>
+                        </td>
+                        <td>
+                            <%= service.device%>
+                        </td>
+                        <td>
+                            <%= service.failure%>
+                        </td>
+                        <td>
+                            <%= service.state%>
+                        </td>
+                        <%if(service.state=="Created"){%>
+                            <td><a class="btn btn-xs btn-warning" href="/service/<%=service._id%>">
+                                    &#10004;
+                                    Accept</a></td>
+                            <td>
+                                <%}else if(service.state=="Accept By Service" ){%>
+                            <td><a class="btn btn-xs btn-success" href="/service/done/<%=service._id%>">&#128295;
+                                    Done</a></td>
+                            <td>
+                                <%}else{%>
+                            <td>Device Was Fixed</td>
+                            <%}%>
+                    </tr>
+                    <%});%>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

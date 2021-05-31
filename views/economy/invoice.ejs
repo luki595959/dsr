@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs')%>
+    <div class="container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>Invoice</h1>
+                <p>Type And Price Of Invoices</p>
+            </div>
+        </header>
+        <div class="table-responsive">
+            <table class="table ">
+                <tr>
+                    <th>Id</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                </tr>
+                <% invoices.forEach(function(invoice){ %>
+                    <tr>
+                        <td>
+                            <%= invoice._id %>
+                        </td>
+                        <td>
+                            <%= invoice.type%>
+                        </td>
+                        <td>
+                            <%= invoice.price%>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>

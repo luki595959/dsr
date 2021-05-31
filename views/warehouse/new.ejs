@@ -1,0 +1,39 @@
+<%- include('../partials/header.ejs')%>
+    <header class="jumbotron">
+        <div class="container">
+            <h1>New Delivery</h1>
+            <p>Create New Delivery</p>
+        </div>
+    </header>
+    <div class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style=" margin: 25px auto; ">
+            <form action="/warehouse" method="post">
+                <div class="form-group">
+                    <label for="a">Driver </label>
+                    <select class="form-control" name="driver" id="a">
+                        <option></option>
+                        <%drivers.forEach(function(driver){%>
+                            <option value="<%=driver.username%>">
+                                <%=driver.username%>
+                            </option>
+                            <%})%>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="b">Device</label>
+                    <input class="form-control" id="b" type="text" name="device" placeholder="Device">
+                </div>
+                <div class="form-group">
+                    <label for="c">Quantity</label>
+                    <input class="form-control" id="c" type="number" name="quantity" placeholder="Quantity">
+                </div>
+                <div class="form-group">
+                    <label for="d">Shop</label>
+                    <input class="form-control" id="d" type="text" name="shop" placeholder="Shop">
+                </div>
+                <button style="width: 100%;" class="btn btn-lg btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs')%>
