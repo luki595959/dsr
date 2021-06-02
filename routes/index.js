@@ -42,19 +42,19 @@ router.post('/login', function (req, res, next) {
         req.logIn(user, function (err) {
             if (err) { return next(err) }
             //console.log(user)
-            if(user.position=="závozník"){
+            if (user.position == "závozník") {
                 var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/driver'
                 delete req.session.redirectTo
                 res.redirect(redirectTo)
-            } else if(user.position=="skladník"){
+            } else if (user.position == "skladník") {
                 var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/warehouse/warehouseman'
                 delete req.session.redirectTo
                 res.redirect(redirectTo)
-            } else if(user.position=="manažér skladu"){
+            } else if (user.position == "manažér skladu") {
                 var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/warehouse'
                 delete req.session.redirectTo
                 res.redirect(redirectTo)
-            } else if(user.position=="servisný štáb"){
+            } else if (user.position == "servisný štáb") {
                 var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/service/services'
                 delete req.session.redirectTo
                 res.redirect(redirectTo)
@@ -77,6 +77,40 @@ router.get("/logout", function (req, res) {
 //show profile
 router.get("/profile", middlewareObj.isLoggedIn, function (req, res) {
     res.render("profile")
+})
+
+
+router.get("/password", middlewareObj.isLoggedIn, function (req, res) {
+    res.render("password")
+})
+
+router.post('/changepassword', function (req, res) {
+    User.findOne({ _id: req.user._id }, (err, user) => {
+        if (err) {
+            req.flash("error", err)
+            res.redirect("/")
+        } else {
+            if (!user) {
+                req.flash("error", "User Not Found")
+                res.redirect("/")
+            } else {
+                user.changePassword(req.body.oldpassword, req.body.newpassword, function (err) {
+                    if (err) {
+                        if (err.name === 'IncorrectPasswordError') {
+                            req.flash("error", "Incorrect Password")
+                            res.redirect("/profile")
+                        } else {
+                            req.flash("error", "Something Went Wrong!! Please Try Again After Sometimes")
+                            res.redirect("/profile")
+                        }
+                    } else {
+                        req.flash("success", "Your Password Has Been Changed Successfully")
+                        res.redirect("/profile")
+                    }
+                })
+            }
+        }
+    })
 })
 
 module.exports = router
