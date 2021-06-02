@@ -7,7 +7,7 @@ const middlewareObj = require("../middleware")
 
 //show all the delivery
 router.get("/", middlewareObj.isLoggedIn, middlewareObj.drive, function (req, res) {
-    Delivery.find({}, function (err, allDelivery) {
+    Delivery.find({driver: req.user.username}, function (err, allDelivery) {
         if (err) {
             console.log(err)
         } else {

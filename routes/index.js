@@ -17,7 +17,7 @@ router.get("/register", function (req, res) {
 
 //handle sign up logic
 router.post("/register", function (req, res) {
-    var newUser = new User({ username: req.body.username, position: req.body.position, telefon: req.body.telefon })
+    var newUser = new User({ username: req.body.username, position: req.body.position, phone: req.body.phone })
     User.register(newUser, req.body.password, function (err, user) {
         if (err) {
             req.flash("error", err.message)
@@ -41,9 +41,28 @@ router.post('/login', function (req, res, next) {
         if (!user) { return res.redirect('/login') }
         req.logIn(user, function (err) {
             if (err) { return next(err) }
-            var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/profile'
-            delete req.session.redirectTo
-            res.redirect(redirectTo)
+            //console.log(user)
+            if(user.position=="závozník"){
+                var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/driver'
+                delete req.session.redirectTo
+                res.redirect(redirectTo)
+            } else if(user.position=="skladník"){
+                var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/warehouse/warehouseman'
+                delete req.session.redirectTo
+                res.redirect(redirectTo)
+            } else if(user.position=="manažér skladu"){
+                var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/warehouse'
+                delete req.session.redirectTo
+                res.redirect(redirectTo)
+            } else if(user.position=="servisný štáb"){
+                var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/service/services'
+                delete req.session.redirectTo
+                res.redirect(redirectTo)
+            } else {
+                var redirectTo = req.session.redirectTo ? req.session.redirectTo : '/profile'
+                delete req.session.redirectTo
+                res.redirect(redirectTo)
+            }
         })
     })(req, res, next)
 })
