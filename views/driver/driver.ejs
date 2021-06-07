@@ -2,7 +2,7 @@
     <div class="container">
         <header class="jumbotron">
             <div class="container">
-                <h1>Delivey</h1>
+                <h1>Delivery</h1>
                 <p>All Delivery</p>
             </div>
         </header>
@@ -35,13 +35,18 @@
                             <%= delivery.state%>
                         </td>
                         <%if(delivery.state=="Ready For Driver"){%>
-                            <td><a class="btn btn-xs btn-success" href="/driver/<%=delivery._id%>">
+                            <td><a class="btn btn-xs btn-warning" href="/driver/<%=delivery._id%>">
                                     &#10004;
-                                    Accept</a></td>
-                            <td>
-                                <%}else{%>
-                            <td></td>
-                            <%}%>
+                                    Accept</a>
+                            </td>
+                            <%}else if(delivery.state=="Accept By Driver" ){%>
+                                <td><a class="btn btn-xs btn-success" href="/driver/done/<%=delivery._id%>">
+                                        &#128666;
+                                        Delivered</a>
+                                </td>
+                                <%} else {%>
+                                    <td></td>
+                                    <%}%>
                     </tr>
                     <%});%>
             </table>

@@ -7,7 +7,7 @@ const middlewareObj = require("../middleware")
 
 //show all the delivery
 router.get("/", middlewareObj.isLoggedIn, middlewareObj.drive, function (req, res) {
-    Delivery.find({driver: req.user.username}, function (err, allDelivery) {
+    Delivery.find({ driver: req.user.username }, function (err, allDelivery) {
         if (err) {
             console.log(err)
         } else {
@@ -36,4 +36,23 @@ router.get("/:id", middlewareObj.isLoggedIn, middlewareObj.drive, function (req,
     })
 })
 
+//complete delivery
+router.get("/done/:id", middlewareObj.isLoggedIn, middlewareObj.drive, function (req, res) {
+    Delivery.findById(req.params.id).exec(function (err, foundDelivery) {
+        if (err) {
+            console.log(err)
+        } else {
+            foundDelivery.state = "Delivered To Shop"
+            updateDelivery = foundDelivery
+            Delivery.findByIdAndUpdate(req.params.id, updateDelivery, function (err, updatedDelivery) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    req.flash("success", "Succesfully Updated Delivery")
+                    res.redirect("/driver")
+                }
+            })
+        }
+    })
+})
 module.exports = router
