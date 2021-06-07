@@ -1,7 +1,7 @@
 {
-  "name": "dsr",
+  "name": "zadanie na dsr",
   "version": "1.0.0",
-  "description": "zadanie na dsr",
+  "description": "vypracoval Bc. Lukáš Galdun a nedostal zaplatene.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
