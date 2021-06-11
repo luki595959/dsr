@@ -1,7 +1,7 @@
 {
-  "name": "zadanie na dsr",
+  "name": "dsr",
   "version": "1.0.0",
-  "description": "vypracoval Bc. Lukáš Galdun a nedostal zaplatene.",
+  "description": "assignment for DSR - web app",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "keywords": [
     "dsr"
   ],
-  "author": "Lukáš Galdun",
+  "author": "Bc. Lukáš Galdun",
   "license": "MIT",
   "dependencies": {
     "connect-flash": "^0.1.1",
